@@ -30,6 +30,11 @@ ActiveRecord::Schema.define(version: 20161214112657) do
     t.index ["collector_id", "form_field_id"], name: "collectors_data_nodes_collector_id_form_field_id", unique: true
   end
 
+  create_table "dsj_fields_snippets", force: :cascade do |t|
+    t.integer "form_field_id", null: false
+    t.integer "snippet_id",    null: false
+  end
+
   create_table "dsj_form_fields", force: :cascade do |t|
     t.integer  "form_id",                        null: false
     t.string   "field",              limit: 100, null: false
@@ -42,20 +47,23 @@ ActiveRecord::Schema.define(version: 20161214112657) do
   end
 
   create_table "dsj_forms", force: :cascade do |t|
-    t.string   "form_name",                null: false
-    t.string   "presentation", limit: 100
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "form_name",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["form_name"], name: "index_dsj_forms_on_form_name"
   end
 
-  create_table "dsj_questions", force: :cascade do |t|
-    t.integer  "form_field_id", null: false
+  create_table "dsj_forms_snippets", force: :cascade do |t|
+    t.integer "form_id",    null: false
+    t.integer "snippet_id", null: false
+  end
+
+  create_table "dsj_snippets", force: :cascade do |t|
     t.text     "raw_text"
-    t.string   "I18n_keyd"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["I18n_keyd"], name: "index_dsj_questions_on_I18n_keyd"
+    t.string   "I18n_key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["I18n_key"], name: "index_dsj_snippets_on_I18n_key"
   end
 
 end
