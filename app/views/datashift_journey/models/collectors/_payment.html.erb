@@ -1,0 +1,21 @@
+<%#= You can access the Reform form object via local : form %>
+<%#= You can access the Reform form model object via  : form.model %>
+<%#= You have access to main DSJ jopurney object via local : journey_plan %>
+
+<header class="text">
+  <h1 class="form-title heading-large" id="groupLabel"><%= t(".header") %></h1>
+</header>
+
+<fieldset>
+  <legend class="visuallyhidden"><%= t(".legend") %></legend>
+  <%= f.label :payment_type,  t(".field_value_label"), class: 'form-label' %>
+
+  <%= f.collection_radio_buttons(
+      :payment_type,
+      ['visa', 'master card', 'pay pal'],
+      :first,
+      :last
+  ) {|b| b.label() { b.radio_button + b.text } }
+
+  %>
+</fieldset>
