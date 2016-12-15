@@ -8,28 +8,28 @@
 
 module DatashiftJourney
 
-  ship_address_form = Models::Form.create(form_name: 'ShipAddress')
+  ship_address_page = Collector::PageState.create(form_name: 'ShipAddress')
 
-  ship_name_field = Models::FormField.create(
-      form: ship_address_form,
+  ship_name_field = Collector::FormField.create(
+      page_state: ship_address_page,
       field: :name,
       field_type: :string
   )
 
-  Models::FieldSnippet.create(
+  Collector::FieldSnippet.create(
       form_field: ship_name_field,
-      snippet: Models::Snippet.create(I18n_key: :enter_your_name)
+      snippet: Collector::Snippet.create(I18n_key: :enter_your_name)
   )
 
-  ship_address_field = Models::FormField.create(
-      form: ship_address_form,
+  ship_address_field = Collector::FormField.create(
+      page_state: ship_address_page,
       field: :address,
       field_type: :string
   )
 
-  Models::FieldSnippet.create(
+  Collector::FieldSnippet.create(
       form_field: ship_address_field,
-      snippet: Models::Snippet.create(raw_text: "Enter your Name")
+      snippet: Collector::Snippet.create(raw_text: "Enter your Name")
   )
 
 end

@@ -36,26 +36,26 @@ ActiveRecord::Schema.define(version: 20161214112657) do
   end
 
   create_table "dsj_form_fields", force: :cascade do |t|
-    t.integer  "form_id",                        null: false
+    t.integer  "page_state_id",                  null: false
     t.string   "field",              limit: 100, null: false
     t.string   "field_type",                     null: false
     t.string   "field_presentation", limit: 100
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.index ["field"], name: "index_dsj_form_fields_on_field"
-    t.index ["form_id"], name: "index_dsj_form_fields_on_form_id"
+    t.index ["page_state_id"], name: "index_dsj_form_fields_on_page_state_id"
   end
 
-  create_table "dsj_forms", force: :cascade do |t|
+  create_table "dsj_page_states", force: :cascade do |t|
     t.string   "form_name",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["form_name"], name: "index_dsj_forms_on_form_name"
+    t.index ["form_name"], name: "index_dsj_page_states_on_form_name"
   end
 
-  create_table "dsj_forms_snippets", force: :cascade do |t|
-    t.integer "form_id",    null: false
-    t.integer "snippet_id", null: false
+  create_table "dsj_page_states_snippets", force: :cascade do |t|
+    t.integer "page_state_id", null: false
+    t.integer "snippet_id",    null: false
   end
 
   create_table "dsj_snippets", force: :cascade do |t|
