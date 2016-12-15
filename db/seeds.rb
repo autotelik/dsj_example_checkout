@@ -16,15 +16,27 @@ module DatashiftJourney
       field_type: :string
   )
 
-  Collector::FieldSnippet.create(
-      form_field: ship_name_field,
-      snippet: Collector::Snippet.create(I18n_key: :enter_your_name)
-  )
-
   ship_address_field = Collector::FormField.create(
       page_state: ship_address_page,
       field: :address,
       field_type: :string
+  )
+
+  ship_address_country_field = Collector::FormField.create(
+      page_state: ship_address_page,
+      field: :address_country,
+      field_type: :string
+  )
+
+  ship_email_field = Collector::FormField.create(
+      page_state: ship_address_page,
+      field: :email,
+      field_type: :string
+  )
+
+  Collector::FieldSnippet.create(
+      form_field: ship_name_field,
+      snippet: Collector::Snippet.create(I18n_key: :enter_your_name)
   )
 
   Collector::FieldSnippet.create(

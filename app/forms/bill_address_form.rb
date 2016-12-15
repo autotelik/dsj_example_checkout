@@ -1,4 +1,4 @@
-class  BillAddressForm < DatashiftJourney::BaseCollectorForm
+class  BillAddressForm < DatashiftJourney::Collector::BaseCollectorForm
 
   def params_key
     :bill_address
