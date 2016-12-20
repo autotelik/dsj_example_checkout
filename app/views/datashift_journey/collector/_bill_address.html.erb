@@ -1,13 +1,18 @@
 <%#= You can access the Reform form object via local : form %>
-<%#= You can access the Reform form model object via  : form.model %>
-<%#= You have access to main DSJ jopurney object via local : journey_plan %>
+<%#= You can access the Page model object via  : form.model %>
+<%#= You have access to main DSJ journey object via local : journey_plan %>
 
 <header class="text">
-  <h1 class="form-title heading-large" id="groupLabel"><%= t(".header") %></h1>
+  <h1 class="form-title heading-large" id="groupLabel"><%= form.model.header %></h1>
 </header>
 
 <fieldset>
-  <legend class="visuallyhidden"><%= t(".legend") %></legend>
-  <%= f.label :field_value,  t(".field_value_label"), class: 'form-label' %>
-  <%= f.text_field :field_value, class: 'form-control form-control-char-50' %>
+
+  <% form.model.form_fields.each do |ff| %>
+      <%= fields_for :data_nodes do |d| %>
+          <legend class="visuallyhidden"><%= ff.question %></legend>
+          <%= d.label ff.field,  ff.question, class: 'form-label' %>
+          <%= d.text_field :field, class: 'form-control form-control-char-50' %>
+      <% end %>
+  <% end %>
 </fieldset>
